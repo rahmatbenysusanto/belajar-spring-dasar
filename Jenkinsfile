@@ -1,13 +1,23 @@
 pipeline {
     agent any
     stages {
-        stage('hello') {
+        stage('Build') {
             steps {
-                echo 'Hallo Rahmat Beny'
+                echo 'Hello Build'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Hello Test'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Hello Deploy'
             }
         }
     }
-    
+
     post {
         always {
             echo 'Always'

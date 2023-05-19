@@ -5,9 +5,19 @@ pipeline {
             steps {
                 echo 'Start Build'
                 sh('./mvnw clean compile test-compile')
-                sh('ssh root@167.71.200.180')
-                sh('RahmatB12@s')
                 echo 'Finish Build'
+                node {
+                    def remote = [:]
+                    remote.name = 'test'
+                    remote.host = 'test.domain.com'
+                    remote.user = 'root'
+                    remote.password = 'password'
+                    remote.allowAnyHosts = true
+                    stage('Remote SSH') {
+                        sshCommand remote: remote, command: "ls -lrt"
+                        sshCommand remote: remote, command: "for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done"
+                    }
+                }
             }
         }
         stage('Test') {

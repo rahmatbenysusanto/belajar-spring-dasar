@@ -6,14 +6,14 @@ pipeline {
                 echo 'Hallo Rahmat Beny'
             }
         }
-
-        post {
-            always {
-                echo 'Always'
-            }
-            success {
-                echo 'Success'
-            }
+    }
+    
+    post {
+        always {
+            echo 'Always'
+        }
+        success {
+            echo 'Success'
         }
     }
 }

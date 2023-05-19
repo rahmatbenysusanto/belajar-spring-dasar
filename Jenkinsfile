@@ -5,6 +5,8 @@ pipeline {
             steps {
                 echo 'Start Build'
                 sh('./mvnw clean compile test-compile')
+                sh('ssh root@167.71.200.180')
+                sh('RahmatB12@s')
                 echo 'Finish Build'
             }
         }
